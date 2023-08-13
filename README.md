@@ -1,4 +1,4 @@
-# A Web-Based Chat Application
+# ConnectCHAT: A Web-Based Chat Application
 
 ## Quick Start
 - Clone the repository
