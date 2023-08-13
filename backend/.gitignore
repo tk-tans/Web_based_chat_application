@@ -1,0 +1,9 @@
+node_modules/
+.env
+build/
+*.log
+public/images/profile/*
+public/images/group-profile/*
+public/chat/*
+tmp/*
+!*/**/.gitkeep

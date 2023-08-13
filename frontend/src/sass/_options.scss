@@ -1,0 +1,39 @@
+@use "./colors" as *;
+
+.options {
+    cursor: pointer;
+
+    width: 1rem;
+
+    position: relative;
+
+    & svg {
+        color: $primary;
+    }
+
+    &__menu {
+        z-index: 1;
+        border: 1px solid $primary;
+        position: absolute;
+
+        width: 10rem;
+
+        background: var(--grey-scale-1-5);
+        box-shadow: 0 5px 10px 2px var(--dark-elevation);
+        border-radius: 0.5rem;
+
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+
+        &__field {
+            color: var(--grey-scale-7);
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+        }
+
+        &__field:hover {
+            background-color: var(--grey-scale-1-25);
+        }
+    }
+}

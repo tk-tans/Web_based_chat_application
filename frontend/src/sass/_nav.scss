@@ -1,0 +1,58 @@
+.navbar {
+    position: absolute;
+    padding: 1rem 3rem;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    right: 0;
+}
+
+.toggle-btn {
+    z-index: 1;
+    width: 3.5rem;
+    height: 1.5rem;
+    border: 2px solid var(--grey-scale-10);
+    position: relative;
+
+    border-radius: 0.75rem;
+
+    cursor: pointer;
+
+    &__circle {
+        position: absolute;
+        height: 1.125rem;
+        aspect-ratio: 1;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        background-color: var(--grey-scale-10);
+        border-radius: 50%;
+
+        top: 50%;
+
+        transform: translateY(-50%);
+
+        transition: transform 300ms ease;
+
+        &.move-right {
+            animation-name: move-right;
+            animation-duration: 1000ms;
+            animation-timing-function: linear;
+
+            transform: translate(175%, -50%);
+        }
+
+        &.move-left {
+            animation-name: move-right;
+            animation-duration: 1000ms;
+            animation-direction: reverse;
+            animation-timing-function: linear;
+
+            transform: translate(2px, -50%);
+        }
+    }
+}

@@ -1,0 +1,29 @@
+@use "./colors" as *;
+
+.loading-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & > h2 {
+        color: var(--grey-scale-7);
+    }
+
+    & > svg {
+        color: $primary;
+
+        animation-name: spinner;
+        animation-duration: 1000ms;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+
+        @keyframes spinner {
+            from {
+                transform: translateX(-50%) rotate(0deg);
+            }
+            to {
+                transform: translateX(-50%) rotate(360deg);
+            }
+        }
+    }
+}

@@ -1,0 +1,71 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String   @id @db.VarChar(100)
+  username      String   @unique @db.VarChar(100)
+  email         String   @unique @db.VarChar(100)
+  name          String   @db.VarChar(100)
+  createdAt     DateTime @default(now()) @map("created_at")
+  password      String   @db.VarChar(100)
+  picture       String?  @db.VarChar(400)
+  online        Boolean
+  devicesOnline Int      @map("devices_online")
+  dark          Boolean
+  lastOnline    DateTime @map("last_online")
+
+  participation Member[]
+  messages      Message[]
+}
+
+model Chat {
+  id               String   @id @db.VarChar(100)
+  dm               Boolean
+  name             String?  @db.VarChar(100)
+  picture          String?  @db.VarChar(400)
+  createdAt        DateTime @default(now()) @map("created_at")
+  lastMessage      DateTime
+  disappearingMode Boolean  @map("disappearing_mode")
+
+  participants Member[]
+  messages     Message[]
+}
+
+model Member {
+  uid      String   @db.VarChar(100)
+  cid      String   @db.VarChar(100)
+  admin    Boolean
+  removed  Boolean
+  lastSeen DateTime @map("last_seen")
+
+  messages Message[]
+
+  user User @relation(fields: [uid], references: [id])
+  chat Chat @relation(fields: [cid], references: [id])
+
+  @@id([uid, cid])
+  @@unique([uid, cid])
+}
+
+model Message {
+  id           String   @id @db.VarChar(100)
+  createdAt    DateTime @default(now()) @map("created_at")
+  uid          String   @db.VarChar(100)
+  cid          String   @db.VarChar(100)
+  content      String?  @db.VarChar(1000)
+  filePath     String?  @db.VarChar(1000)
+  disappearing Boolean
+
+  member Member @relation(fields: [uid, cid], references: [uid, cid])
+  chat   Chat   @relation(fields: [cid], references: [id])
+  user   User   @relation(fields: [uid], references: [id])
+}

@@ -1,0 +1,166 @@
+@use "./colors" as *;
+@import url("https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap");
+
+*,
+*:after,
+*:before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+    font-family: Dosis, sans-serif;
+}
+
+body,
+html,
+#root {
+    height: 100%;
+}
+
+#portal {
+    height: 100%;
+    z-index: 1001;
+}
+
+:root {
+    --dark-elevation: rgb(120, 120, 120);
+    --grey-scale-0: rgb(250, 252, 254);
+    --grey-scale-1: rgb(200, 203, 205);
+    --grey-scale-1-25: rgb(220, 223, 225, 0.85);
+    --grey-scale-1-5: rgb(240, 242, 245);
+    --grey-scale-1-75: rgb(225, 227, 229);
+    --grey-scale-2: rgb(192, 194, 196);
+    --grey-scale-2-op: rgb(192, 194, 196, 0.5);
+    --grey-scale-3: rgb(180, 182, 184);
+    --grey-scale-4: rgb(185, 187, 189);
+    --grey-scale-5: rgb(178, 180, 182);
+    --grey-scale-7: rgb(64, 66, 68);
+    --grey-scale-8: rgb(32, 35, 38);
+    --grey-scale-10: #010409;
+
+    --hover: rgb(255, 145, 145);
+    --active: rgb(250, 123, 123);
+
+    --background: var(--grey-scale-2);
+}
+
+body.dark {
+    --dark-elevation: rgb(15, 15, 15);
+    --grey-scale-0: #010409;
+    --grey-scale-1: rgb(14, 10, 17);
+    --grey-scale-1-25: rgb(32, 34, 35);
+    --grey-scale-1-5: rgb(20, 24, 27);
+    --grey-scale-2: rgb(23, 27, 33);
+    --grey-scale-2-op: rgb(23, 27, 33, 0.95);
+    --grey-scale-3: rgb(20, 23, 30);
+    --grey-scale-4: rgb(22, 25, 29);
+    --grey-scale-4-5: rgb(38, 40, 42);
+    --grey-scale-5: rgb(50, 51, 53);
+    --grey-scale-7: rgb(128, 130, 132);
+    --grey-scale-8: rgb(140, 143, 145);
+    --grey-scale-10: rgb(150, 150, 150);
+
+    --hover: rgb(82, 33, 33);
+    --active: rgb(94, 38, 38);
+
+    --background: var(--grey-scale-2);
+}
+
+body {
+    background: var(--background);
+
+    overflow: hidden;
+}
+
+body.loading {
+    cursor: wait;
+}
+
+.container {
+    height: 100%;
+    width: 100%;
+}
+
+a {
+    color: $primary;
+}
+
+.primary-input {
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--grey-scale-2);
+    outline: none;
+
+    font-size: 1rem;
+
+    border-radius: 0.75rem;
+
+    background-color: var(--grey-scale-1);
+    color: var(--grey-scale-10);
+}
+
+.primary-input:focus {
+    border: 1px solid var(--grey-scale-5);
+}
+
+.btn {
+    outline: none;
+    padding: 0.75rem 0rem;
+    cursor: pointer;
+
+    font-weight: 600;
+    font-size: 1rem;
+
+    border: none;
+    border-radius: 0.5rem;
+
+    background: $primary;
+}
+
+.btn:hover {
+    background: lighten($primary, 5%);
+}
+
+.secondary-btn {
+    outline: none;
+    padding: 0.75rem 0rem;
+    cursor: pointer;
+
+    font-weight: 600;
+    font-size: 1rem;
+
+    border: 1px solid $primary;
+    border-radius: 0.5rem;
+
+    color: $primary;
+
+    background: transparent;
+
+    padding: 0.5rem 1rem;
+}
+
+.secondary-btn:hover {
+    background-color: rgb(246, 67, 67, 0.2);
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+    cursor: pointer;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background: $primary;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: lighten($primary, 5%);
+}
